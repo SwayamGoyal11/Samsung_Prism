@@ -76,6 +76,13 @@ Follow these steps to run the project locally:
 - `/app/components`: Reusable UI components including Navbars, Sidebar, Cards, and landing page sections.
 - `/public`: Static assets and icons.
 
+## 🤖 AI Disclosure
+
+In accordance with transparency best practices, we disclose the following use of AI in this project:
+
+- **Within the Application:** The core functionality of this platform is built around GenAI. It simulates the use of Large Language Models (LLMs) to process conversational transcripts, generate structured summaries, and automatically extract action items and deadlines. Speech-to-text APIs are conceptualized for processing raw audio into text.
+- **During Development:** AI coding assistants (such as Gemini / Copilot) were utilized to accelerate development by assisting with frontend component generation, UI/UX ideation, boilerplate code creation, and structuring documentation/presentation materials.
+
 ## 📄 License
 
 This project is licensed under the MIT License.

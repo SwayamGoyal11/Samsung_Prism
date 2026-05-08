@@ -25,35 +25,35 @@ export default function TasksPage() {
   return (
     <>
       <TopBar title="Tasks" subtitle="Track action items from meetings" />
-      <div className="p-6 space-y-6">
+      <div className="p-8 space-y-8 max-w-[1600px] mx-auto">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex gap-2">
             {filters.map(f => (
-              <button key={f} onClick={() => setFilter(f)} className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${filter === f ? "bg-purple-500/15 text-purple-300 border border-purple-500/20" : "bg-white/5 text-[#6B7280] border border-white/5 hover:text-white"}`}>{f}</button>
+              <button key={f} onClick={() => setFilter(f)} className={`px-4 py-2 rounded-xl text-[13px] font-medium transition-all ${filter === f ? "bg-indigo-500/[0.08] text-indigo-300 border border-indigo-500/20 shadow-sm" : "bg-white/[0.02] text-[#64748B] border border-white/[0.06] hover:text-[#E8ECF1] hover:bg-white/[0.04]"}`}>{f}</button>
             ))}
           </div>
-          <div className="text-xs text-[#6B7280]">{filtered.length} tasks</div>
+          <div className="text-[13px] font-medium text-[#64748B]">{filtered.length} tasks</div>
         </div>
 
-        <div className="glass-card overflow-hidden">
-          <table className="w-full text-xs">
-            <thead><tr className="border-b border-white/5 text-[#6B7280]">
-              <th className="text-left py-3 px-4 font-medium">Status</th>
-              <th className="text-left py-3 px-4 font-medium">Task</th>
-              <th className="text-left py-3 px-4 font-medium">Assignee</th>
-              <th className="text-left py-3 px-4 font-medium">Source Meeting</th>
-              <th className="text-left py-3 px-4 font-medium">Deadline</th>
-              <th className="text-left py-3 px-4 font-medium">Priority</th>
+        <div className="glass-card overflow-hidden border border-white/[0.06] rounded-2xl bg-white/[0.02]">
+          <table className="w-full text-[13px]">
+            <thead><tr className="border-b border-white/[0.06] text-[#64748B]">
+              <th className="text-left py-4 px-6 font-medium">Status</th>
+              <th className="text-left py-4 px-6 font-medium">Task</th>
+              <th className="text-left py-4 px-6 font-medium">Assignee</th>
+              <th className="text-left py-4 px-6 font-medium">Source Meeting</th>
+              <th className="text-left py-4 px-6 font-medium">Deadline</th>
+              <th className="text-left py-4 px-6 font-medium">Priority</th>
             </tr></thead>
             <tbody>
               {filtered.map((t, i) => (
-                <motion.tr key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.04 }} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-                  <td className="py-3 px-4">{statusIcon(t.status)}</td>
-                  <td className="py-3 px-4 font-medium text-[#F9FAFB]">{t.task}</td>
-                  <td className="py-3 px-4 text-[#9CA3AF]">{t.assignee}</td>
-                  <td className="py-3 px-4 text-[#9CA3AF]">{t.meeting}</td>
-                  <td className="py-3 px-4 text-[#9CA3AF]">{t.deadline}</td>
-                  <td className="py-3 px-4"><span className={`px-2 py-0.5 rounded-full text-[10px] ${t.priority === "High" ? "bg-red-400/10 text-red-400" : t.priority === "Medium" ? "bg-yellow-400/10 text-yellow-400" : "bg-blue-400/10 text-blue-400"}`}>{t.priority}</span></td>
+                <motion.tr key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.04 }} className="border-b border-white/[0.06] hover:bg-white/[0.03] transition-colors group">
+                  <td className="py-4 px-6">{statusIcon(t.status)}</td>
+                  <td className="py-4 px-6 font-medium text-[#E8ECF1] group-hover:text-indigo-300 transition-colors">{t.task}</td>
+                  <td className="py-4 px-6 text-[#94A3B8]">{t.assignee}</td>
+                  <td className="py-4 px-6 text-[#94A3B8]">{t.meeting}</td>
+                  <td className="py-4 px-6 text-[#94A3B8]">{t.deadline}</td>
+                  <td className="py-4 px-6"><span className={`px-2.5 py-1 rounded-md font-semibold text-[11px] border ${t.priority === "High" ? "bg-rose-400/10 text-rose-400 border-rose-400/20" : t.priority === "Medium" ? "bg-amber-400/10 text-amber-400 border-amber-400/20" : "bg-blue-400/10 text-blue-400 border-blue-400/20"}`}>{t.priority}</span></td>
                 </motion.tr>
               ))}
             </tbody>

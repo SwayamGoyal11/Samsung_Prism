@@ -174,16 +174,16 @@ export default function DashboardPage() {
     <>
       <TopBar title="Dashboard" subtitle="Welcome back, John" />
 
-      <div className="p-6 space-y-6">
+      <div className="p-8 space-y-8 max-w-[1600px] mx-auto">
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="glass-card glass-card-hover p-4"
+              className="glass-card p-5 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 border border-white/[0.06] rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent"
             >
               <div className="flex items-center justify-between mb-3">
                 <div
@@ -193,8 +193,8 @@ export default function DashboardPage() {
                   <stat.icon className="w-4 h-4" style={{ color: stat.color }} />
                 </div>
                 <div
-                  className={`flex items-center gap-0.5 text-xs font-medium ${
-                    stat.up ? "text-green-400" : "text-red-400"
+                  className={`flex items-center gap-1 text-[12px] font-semibold px-2 py-1 rounded-full ${
+                    stat.up ? "text-emerald-400 bg-emerald-400/10" : "text-rose-400 bg-rose-400/10"
                   }`}
                 >
                   {stat.up ? (
@@ -205,35 +205,35 @@ export default function DashboardPage() {
                   {stat.change}
                 </div>
               </div>
-              <div className="text-2xl font-bold stat-number">{stat.value}</div>
-              <div className="text-xs text-[#6B7280] mt-0.5">{stat.label}</div>
+              <div className="text-[28px] font-bold text-[#E8ECF1] tracking-tight">{stat.value}</div>
+              <div className="text-[13px] font-medium text-[#64748B] mt-1">{stat.label}</div>
             </motion.div>
           ))}
         </div>
 
         {/* Charts Row */}
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid xl:grid-cols-2 gap-8">
           {/* Meeting Activity Chart */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="glass-card p-6"
+            className="glass-card p-6 border border-white/[0.06] rounded-2xl bg-white/[0.02]"
           >
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="text-sm font-semibold">Meeting Activity</h3>
-                <p className="text-xs text-[#6B7280] mt-0.5">This week&apos;s overview</p>
+                <h3 className="text-[15px] font-semibold text-[#E8ECF1]">Meeting Activity</h3>
+                <p className="text-[13px] text-[#64748B] mt-1">This week&apos;s overview</p>
               </div>
-              <button className="p-2 rounded-lg hover:bg-white/5 transition-colors">
+              <button className="p-2 rounded-lg hover:bg-white/[0.04] transition-colors border border-transparent hover:border-white/[0.06]">
                 <MoreHorizontal className="w-4 h-4 text-[#6B7280]" />
               </button>
             </div>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={meetingData} barGap={4}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "#6B7280" }} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "#6B7280" }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#64748B" }} dy={10} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#64748B" }} dx={-10} />
                 <Tooltip content={<CustomTooltip />} />
                 <Bar dataKey="meetings" fill="#7C3AED" radius={[6, 6, 0, 0]} name="Meetings" />
                 <Bar dataKey="tasks" fill="#06B6D4" radius={[6, 6, 0, 0]} name="Tasks" />
@@ -246,14 +246,14 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="glass-card p-6"
+            className="glass-card p-6 border border-white/[0.06] rounded-2xl bg-white/[0.02]"
           >
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="text-sm font-semibold">Productivity Trend</h3>
-                <p className="text-xs text-[#6B7280] mt-0.5">Monthly score</p>
+                <h3 className="text-[15px] font-semibold text-[#E8ECF1]">Productivity Trend</h3>
+                <p className="text-[13px] text-[#64748B] mt-1">Monthly score</p>
               </div>
-              <button className="p-2 rounded-lg hover:bg-white/5 transition-colors">
+              <button className="p-2 rounded-lg hover:bg-white/[0.04] transition-colors border border-transparent hover:border-white/[0.06]">
                 <MoreHorizontal className="w-4 h-4 text-[#6B7280]" />
               </button>
             </div>
@@ -265,9 +265,9 @@ export default function DashboardPage() {
                     <stop offset="95%" stopColor="#7C3AED" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "#6B7280" }} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "#6B7280" }} domain={[60, 100]} />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#64748B" }} dy={10} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#64748B" }} domain={[60, 100]} dx={-10} />
                 <Tooltip content={<CustomTooltip />} />
                 <Area
                   type="monotone"
@@ -283,17 +283,17 @@ export default function DashboardPage() {
         </div>
 
         {/* Bottom Row */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid xl:grid-cols-3 gap-8">
           {/* Recent Meetings */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.5 }}
-            className="glass-card p-6 lg:col-span-1"
+            className="glass-card p-6 border border-white/[0.06] rounded-2xl bg-white/[0.02]"
           >
             <div className="flex items-center justify-between mb-5">
-              <h3 className="text-sm font-semibold">Recent Meetings</h3>
-              <a href="/dashboard/meetings" className="text-xs text-purple-400 hover:text-purple-300">
+              <h3 className="text-[15px] font-semibold text-[#E8ECF1]">Recent Meetings</h3>
+              <a href="/dashboard/meetings" className="text-[13px] font-medium text-indigo-400 hover:text-indigo-300 transition-colors">
                 View All
               </a>
             </div>
@@ -302,27 +302,27 @@ export default function DashboardPage() {
                 <a
                   key={i}
                   href={`/dashboard/meetings/${i + 1}`}
-                  className="block p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-purple-500/20 transition-all duration-200 group"
+                  className="block p-4 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] hover:border-indigo-500/30 transition-all duration-300 group"
                 >
                   <div className="flex items-start justify-between mb-2">
-                    <h4 className="text-sm font-medium group-hover:text-purple-300 transition-colors line-clamp-1">
+                    <h4 className="text-[14px] font-medium text-[#E8ECF1] group-hover:text-indigo-300 transition-colors line-clamp-1">
                       {m.title}
                     </h4>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-400/10 text-green-400 shrink-0 ml-2">
+                    <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-emerald-400/10 text-emerald-400 shrink-0 ml-2 border border-emerald-400/20">
                       {m.status}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 text-[11px] text-[#6B7280]">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
+                  <div className="flex items-center gap-4 text-[12px] font-medium text-[#64748B]">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
                       {m.time}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Users className="w-3 h-3" />
+                    <span className="flex items-center gap-1.5">
+                      <Users className="w-3.5 h-3.5" />
                       {m.participants}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <ListChecks className="w-3 h-3" />
+                    <span className="flex items-center gap-1.5">
+                      <ListChecks className="w-3.5 h-3.5" />
                       {m.tasks} tasks
                     </span>
                   </div>
@@ -336,11 +336,11 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="glass-card p-6"
+            className="glass-card p-6 border border-white/[0.06] rounded-2xl bg-white/[0.02]"
           >
             <div className="flex items-center justify-between mb-5">
-              <h3 className="text-sm font-semibold">Upcoming Deadlines</h3>
-              <a href="/dashboard/tasks" className="text-xs text-purple-400 hover:text-purple-300">
+              <h3 className="text-[15px] font-semibold text-[#E8ECF1]">Upcoming Deadlines</h3>
+              <a href="/dashboard/tasks" className="text-[13px] font-medium text-indigo-400 hover:text-indigo-300 transition-colors">
                 View All
               </a>
             </div>
@@ -348,26 +348,26 @@ export default function DashboardPage() {
               {upcomingDeadlines.map((d, i) => (
                 <div
                   key={i}
-                  className="p-3 rounded-xl bg-white/[0.02] border border-white/5"
+                  className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors"
                 >
-                  <div className="flex items-start justify-between mb-1.5">
-                    <h4 className="text-sm font-medium line-clamp-1">{d.task}</h4>
+                  <div className="flex items-start justify-between mb-2">
+                    <h4 className="text-[14px] font-medium text-[#E8ECF1] line-clamp-1">{d.task}</h4>
                     <span
-                      className={`text-[10px] px-2 py-0.5 rounded-full shrink-0 ml-2 ${
+                      className={`text-[11px] font-semibold px-2 py-0.5 rounded-md shrink-0 ml-2 border ${
                         d.priority === "High"
-                          ? "bg-red-400/10 text-red-400"
+                          ? "bg-rose-400/10 text-rose-400 border-rose-400/20"
                           : d.priority === "Medium"
-                          ? "bg-yellow-400/10 text-yellow-400"
-                          : "bg-blue-400/10 text-blue-400"
+                          ? "bg-amber-400/10 text-amber-400 border-amber-400/20"
+                          : "bg-blue-400/10 text-blue-400 border-blue-400/20"
                       }`}
                     >
                       {d.priority}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 text-[11px] text-[#6B7280]">
+                  <div className="flex items-center gap-4 text-[12px] font-medium text-[#64748B]">
                     <span>{d.assignee}</span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5" />
                       {d.date}
                     </span>
                   </div>
@@ -381,14 +381,14 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}
-            className="glass-card p-6"
+            className="glass-card p-6 border border-white/[0.06] rounded-2xl bg-white/[0.02]"
           >
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-purple-400" />
-                <h3 className="text-sm font-semibold">AI Insights</h3>
+                <Zap className="w-4 h-4 text-indigo-400" />
+                <h3 className="text-[15px] font-semibold text-[#E8ECF1]">AI Insights</h3>
               </div>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-300">
+              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
                 Live
               </span>
             </div>
@@ -399,22 +399,22 @@ export default function DashboardPage() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1 + i * 0.15 }}
-                  className={`p-3 rounded-xl border ${
+                  className={`p-4 rounded-xl border ${
                     insight.type === "alert"
-                      ? "bg-yellow-400/5 border-yellow-400/10"
+                      ? "bg-amber-400/5 border-amber-400/10"
                       : insight.type === "success"
-                      ? "bg-green-400/5 border-green-400/10"
-                      : "bg-purple-400/5 border-purple-400/10"
+                      ? "bg-emerald-400/5 border-emerald-400/10"
+                      : "bg-indigo-400/5 border-indigo-400/10"
                   }`}
                 >
-                  <p className="text-xs text-[#9CA3AF] leading-relaxed">
+                  <p className="text-[13px] font-medium text-[#94A3B8] leading-relaxed">
                     {insight.text}
                   </p>
                 </motion.div>
               ))}
             </div>
-            <button className="w-full mt-4 py-2.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-xs font-medium text-purple-300 transition-colors flex items-center justify-center gap-2">
-              <Brain className="w-3.5 h-3.5" />
+            <button className="w-full mt-6 py-3 rounded-xl bg-indigo-500/10 hover:bg-indigo-500/20 text-[13px] font-semibold text-indigo-300 transition-colors flex items-center justify-center gap-2 border border-indigo-500/20">
+              <Brain className="w-4 h-4" />
               Generate More Insights
             </button>
           </motion.div>

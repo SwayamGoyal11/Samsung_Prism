@@ -51,7 +51,7 @@ export default function AISearchPage() {
   return (
     <>
       <TopBar title="AI Search" subtitle="Ask anything about your meetings" />
-      <div className="p-6 flex flex-col" style={{ height: "calc(100vh - 64px)" }}>
+      <div className="p-8 flex flex-col max-w-[1200px] mx-auto w-full" style={{ height: "calc(100vh - 72px)" }}>
         {/* Messages Area */}
         <div className="flex-1 overflow-y-auto space-y-4 pb-4">
           {messages.length === 0 && (
@@ -59,13 +59,13 @@ export default function AISearchPage() {
               <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mb-4">
                 <Brain className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-xl font-bold mb-2">Meeting Intelligence AI</h2>
-              <p className="text-sm text-[#6B7280] mb-8 text-center max-w-md">Ask any question about your past meetings. I can search across transcripts, summaries, action items, and decisions.</p>
-              <div className="grid sm:grid-cols-2 gap-3 max-w-2xl w-full">
+              <h2 className="text-[24px] font-bold text-[#E8ECF1] mb-2 tracking-tight">Meeting Intelligence AI</h2>
+              <p className="text-[14px] text-[#94A3B8] mb-10 text-center max-w-lg leading-relaxed">Ask any question about your past meetings. I can search across transcripts, summaries, action items, and decisions.</p>
+              <div className="grid sm:grid-cols-2 gap-4 max-w-2xl w-full">
                 {suggestedQueries.map((q, i) => (
                   <motion.button key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.05 }}
-                    onClick={() => handleSend(q)} className="p-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs text-left text-[#9CA3AF] hover:bg-white/[0.06] hover:border-purple-500/20 hover:text-white transition-all">
-                    <MessageSquare className="w-3.5 h-3.5 text-purple-400 mb-1.5" />
+                    onClick={() => handleSend(q)} className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] text-[13px] text-left text-[#94A3B8] hover:bg-white/[0.04] hover:border-indigo-500/30 hover:text-[#E8ECF1] hover:shadow-lg hover:shadow-indigo-500/5 transition-all group">
+                    <MessageSquare className="w-4 h-4 text-indigo-400 mb-2 group-hover:scale-110 transition-transform" />
                     {q}
                   </motion.button>
                 ))}
@@ -76,29 +76,31 @@ export default function AISearchPage() {
           {messages.map((msg, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               className={`max-w-2xl ${msg.role === "user" ? "ml-auto" : "mr-auto"}`}>
-              <div className={msg.role === "user" ? "chat-bubble-user p-4" : "chat-bubble-ai p-4"}>
-                {msg.role === "ai" && <div className="flex items-center gap-1.5 mb-2"><Sparkles className="w-3 h-3 text-purple-400" /><span className="text-[10px] font-medium text-purple-400">AI Response</span></div>}
-                <div className="text-sm leading-relaxed whitespace-pre-line">{msg.text}</div>
+              <div className={msg.role === "user" ? "bg-white/[0.06] border border-white/[0.06] rounded-3xl rounded-tr-sm p-5 text-[#E8ECF1]" : "bg-transparent p-5 text-[#E8ECF1]"}>
+                {msg.role === "ai" && <div className="flex items-center gap-2 mb-3"><Sparkles className="w-4 h-4 text-indigo-400" /><span className="text-[12px] font-semibold text-indigo-400 tracking-wide">AI Assistant</span></div>}
+                <div className="text-[14px] leading-[1.8] whitespace-pre-line text-[#94A3B8]">{msg.text}</div>
               </div>
             </motion.div>
           ))}
 
           {typing && (
-            <div className="chat-bubble-ai p-4 max-w-2xl flex gap-1.5 items-center">
-              <Sparkles className="w-3 h-3 text-purple-400 mr-2" />
-              <span className="typing-dot w-2 h-2 rounded-full bg-purple-400" />
-              <span className="typing-dot w-2 h-2 rounded-full bg-purple-400" />
-              <span className="typing-dot w-2 h-2 rounded-full bg-purple-400" />
+            <div className="bg-transparent p-5 max-w-2xl flex gap-2 items-center">
+              <Sparkles className="w-4 h-4 text-indigo-400 mr-2" />
+              <span className="typing-dot w-2 h-2 rounded-full bg-indigo-400" />
+              <span className="typing-dot w-2 h-2 rounded-full bg-indigo-400" />
+              <span className="typing-dot w-2 h-2 rounded-full bg-indigo-400" />
             </div>
           )}
         </div>
 
         {/* Input */}
-        <div className="glass-card p-3 flex items-center gap-3">
-          <Search className="w-4 h-4 text-[#6B7280] shrink-0" />
-          <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSend()} placeholder="Ask about your meetings..." className="flex-1 bg-transparent text-sm text-white placeholder-[#6B7280] outline-none" />
-          <button onClick={() => handleSend()} className="p-2.5 rounded-xl gradient-bg hover:opacity-90 transition-opacity">
-            <Send className="w-4 h-4 text-white" />
+        <div className="bg-[#060B14] p-2 flex items-center gap-3 rounded-2xl border border-white/[0.08] shadow-2xl focus-within:border-indigo-500/40 focus-within:ring-4 focus-within:ring-indigo-500/10 transition-all">
+          <div className="pl-3">
+            <Search className="w-5 h-5 text-[#64748B] shrink-0" />
+          </div>
+          <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleSend()} placeholder="Ask about your meetings..." className="flex-1 bg-transparent text-[15px] py-3 text-[#E8ECF1] placeholder-[#64748B] outline-none" />
+          <button onClick={() => handleSend()} className="p-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] transition-all">
+            <Send className="w-4 h-4 text-[#E8ECF1]" />
           </button>
         </div>
       </div>

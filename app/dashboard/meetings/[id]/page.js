@@ -127,92 +127,92 @@ export default function MeetingDetailPage() {
   return (
     <>
       <TopBar title="Meeting Details" />
-      <div className="p-6 space-y-6">
+      <div className="p-8 max-w-[1600px] mx-auto space-y-8">
         {/* Back + Header */}
         <div className="flex items-center gap-3 mb-2">
-          <Link href="/dashboard/meetings" className="p-2 rounded-lg hover:bg-white/5 transition-colors">
-            <ArrowLeft className="w-4 h-4 text-[#6B7280]" />
+          <Link href="/dashboard/meetings" className="p-2.5 rounded-xl border border-white/[0.06] hover:bg-white/[0.04] transition-all">
+            <ArrowLeft className="w-4 h-4 text-[#94A3B8]" />
           </Link>
-          <div className="flex-1">
-            <h2 className="text-xl font-bold">{meetingData.title}</h2>
-            <div className="flex flex-wrap items-center gap-4 mt-1.5 text-xs text-[#6B7280]">
-              <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{meetingData.time} · {meetingData.duration}</span>
-              <span className="flex items-center gap-1"><Users className="w-3 h-3" />{meetingData.participants.length} participants</span>
+          <div className="flex-1 ml-2">
+            <h2 className="text-[24px] font-bold text-[#E8ECF1] tracking-tight">{meetingData.title}</h2>
+            <div className="flex flex-wrap items-center gap-5 mt-1.5 text-[13px] font-medium text-[#64748B]">
+              <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{meetingData.time} · {meetingData.duration}</span>
+              <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5" />{meetingData.participants.length} participants</span>
             </div>
           </div>
           <div className="flex gap-2">
-            <button onClick={() => setShowChat(!showChat)} className="px-4 py-2 rounded-xl bg-purple-500/10 border border-purple-500/20 text-xs font-medium text-purple-300 hover:bg-purple-500/20 transition-colors flex items-center gap-2">
-              <Brain className="w-3.5 h-3.5" /> Ask AI
+            <button onClick={() => setShowChat(!showChat)} className="px-4 py-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-[13px] font-semibold text-indigo-300 hover:bg-indigo-500/20 transition-all flex items-center gap-2 shadow-sm">
+              <Brain className="w-4 h-4" /> Ask AI
             </button>
-            <button onClick={() => setShowEmail(!showEmail)} className="px-4 py-2 rounded-xl bg-white/5 border border-white/8 text-xs font-medium text-[#9CA3AF] hover:bg-white/8 transition-colors flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5" /> Follow-up
+            <button onClick={() => setShowEmail(!showEmail)} className="px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-[13px] font-medium text-[#E8ECF1] hover:bg-white/[0.04] transition-all flex items-center gap-2 shadow-sm">
+              <Mail className="w-4 h-4" /> Follow-up
             </button>
-            <button className="px-4 py-2 rounded-xl bg-white/5 border border-white/8 text-xs font-medium text-[#9CA3AF] hover:bg-white/8 transition-colors flex items-center gap-2">
-              <Download className="w-3.5 h-3.5" /> Export
+            <button className="px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-[13px] font-medium text-[#E8ECF1] hover:bg-white/[0.04] transition-all flex items-center gap-2 shadow-sm">
+              <Download className="w-4 h-4" /> Export
             </button>
           </div>
         </div>
 
         {/* Participants */}
-        <div className="glass-card p-4">
-          <h3 className="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-3">Participants</h3>
-          <div className="flex flex-wrap gap-2">
+        <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+          <h3 className="text-[12px] font-semibold text-[#64748B] uppercase tracking-wider mb-4">Participants</h3>
+          <div className="flex flex-wrap gap-3">
             {meetingData.participants.map((p, i) => (
-              <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5 text-xs">
-                <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center text-[9px] font-bold">{p.name.split(" ").map(n=>n[0]).join("")}</div>
-                <span className="font-medium">{p.name}</span>
-                <span className="text-[#6B7280]">· {p.role}</span>
+              <div key={i} className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[13px] transition-all hover:bg-white/[0.05]">
+                <div className="w-7 h-7 rounded-full bg-indigo-500/20 flex items-center justify-center text-[10px] font-bold text-indigo-300">{p.name.split(" ").map(n=>n[0]).join("")}</div>
+                <span className="font-semibold text-[#E8ECF1]">{p.name}</span>
+                <span className="text-[#64748B] font-medium">· {p.role}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-6">
             {/* Tabs */}
-            <div className="flex gap-1 p-1 rounded-xl bg-white/[0.03] border border-white/5 overflow-x-auto">
+            <div className="flex gap-2 p-1.5 rounded-2xl bg-[#060B14] border border-white/[0.08] overflow-x-auto shadow-inner">
               {tabs.map(tab => (
                 <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${activeTab === tab.id ? "bg-purple-500/15 text-purple-300 border border-purple-500/20" : "text-[#6B7280] hover:text-white hover:bg-white/5 border border-transparent"}`}>
-                  <tab.icon className="w-3.5 h-3.5" />{tab.label}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-[13px] font-semibold whitespace-nowrap transition-all ${activeTab === tab.id ? "bg-white/[0.08] text-[#E8ECF1] shadow-sm" : "text-[#64748B] hover:text-[#E8ECF1] hover:bg-white/[0.04]"}`}>
+                  <tab.icon className="w-4 h-4" />{tab.label}
                 </button>
               ))}
             </div>
 
             {/* Tab Content */}
             <AnimatePresence mode="wait">
-              <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="glass-card p-6">
+              <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
                 {activeTab === "summary" && (
                   <div>
-                    <div className="flex items-center gap-2 mb-4">
-                      <Sparkles className="w-4 h-4 text-purple-400" />
-                      <h3 className="text-sm font-semibold">AI-Generated Summary</h3>
+                    <div className="flex items-center gap-3 mb-6">
+                      <Sparkles className="w-5 h-5 text-indigo-400" />
+                      <h3 className="text-[18px] font-semibold text-[#E8ECF1]">AI-Generated Summary</h3>
                     </div>
-                    <p className="text-sm text-[#9CA3AF] leading-relaxed">{meetingData.summary}</p>
+                    <p className="text-[15px] text-[#94A3B8] leading-[1.8]">{meetingData.summary}</p>
                   </div>
                 )}
 
                 {activeTab === "transcript" && (
                   <div>
-                    <h3 className="text-sm font-semibold mb-4">Meeting Transcript</h3>
-                    <div className="space-y-4">
+                    <h3 className="text-[18px] font-semibold text-[#E8ECF1] mb-6">Meeting Transcript</h3>
+                    <div className="space-y-6">
                       {meetingData.transcript.slice(0, transcriptExpanded ? undefined : 4).map((t, i) => (
-                        <div key={i} className="flex gap-3">
-                          <div className="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5">{t.speaker.split(" ").map(n=>n[0]).join("")}</div>
+                        <div key={i} className="flex gap-4">
+                          <div className="w-10 h-10 rounded-full bg-indigo-500/20 border border-indigo-500/20 flex items-center justify-center text-[12px] font-bold text-indigo-300 shrink-0 mt-1">{t.speaker.split(" ").map(n=>n[0]).join("")}</div>
                           <div>
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-xs font-semibold">{t.speaker}</span>
-                              <span className="text-[10px] text-[#6B7280]">{t.time}</span>
+                            <div className="flex items-center gap-3 mb-1.5">
+                              <span className="text-[15px] font-semibold text-[#E8ECF1]">{t.speaker}</span>
+                              <span className="text-[12px] font-medium text-[#64748B]">{t.time}</span>
                             </div>
-                            <p className="text-sm text-[#9CA3AF] leading-relaxed">{t.text}</p>
+                            <p className="text-[15px] text-[#94A3B8] leading-[1.8]">{t.text}</p>
                           </div>
                         </div>
                       ))}
                     </div>
                     {meetingData.transcript.length > 4 && (
-                      <button onClick={() => setTranscriptExpanded(!transcriptExpanded)} className="flex items-center gap-1 mt-4 text-xs text-purple-400 hover:text-purple-300">
-                        {transcriptExpanded ? <><ChevronUp className="w-3 h-3"/>Show Less</> : <><ChevronDown className="w-3 h-3"/>Show All ({meetingData.transcript.length} entries)</>}
+                      <button onClick={() => setTranscriptExpanded(!transcriptExpanded)} className="flex items-center gap-2 mt-8 text-[14px] font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+                        {transcriptExpanded ? <><ChevronUp className="w-4 h-4"/>Show Less</> : <><ChevronDown className="w-4 h-4"/>Show All ({meetingData.transcript.length} entries)</>}
                       </button>
                     )}
                   </div>
@@ -220,22 +220,22 @@ export default function MeetingDetailPage() {
 
                 {activeTab === "actions" && (
                   <div>
-                    <h3 className="text-sm font-semibold mb-4">Action Items</h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-xs">
-                        <thead><tr className="border-b border-white/5 text-[#6B7280]">
-                          <th className="text-left py-2.5 px-3 font-medium">Task</th>
-                          <th className="text-left py-2.5 px-3 font-medium">Assigned To</th>
-                          <th className="text-left py-2.5 px-3 font-medium">Deadline</th>
-                          <th className="text-left py-2.5 px-3 font-medium">Status</th>
+                    <h3 className="text-[18px] font-semibold text-[#E8ECF1] mb-6">Action Items</h3>
+                    <div className="overflow-x-auto rounded-xl border border-white/[0.06] bg-[#060B14]/50">
+                      <table className="w-full text-[14px]">
+                        <thead><tr className="border-b border-white/[0.06] text-[#64748B]">
+                          <th className="text-left py-4 px-5 font-medium">Task</th>
+                          <th className="text-left py-4 px-5 font-medium">Assigned To</th>
+                          <th className="text-left py-4 px-5 font-medium">Deadline</th>
+                          <th className="text-left py-4 px-5 font-medium">Status</th>
                         </tr></thead>
                         <tbody>{meetingData.actionItems.map((a, i) => (
-                          <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02]">
-                            <td className="py-3 px-3 font-medium text-[#F9FAFB]">{a.task}</td>
-                            <td className="py-3 px-3 text-[#9CA3AF]">{a.assignee}</td>
-                            <td className="py-3 px-3 text-[#9CA3AF]">{a.deadline}</td>
-                            <td className="py-3 px-3">
-                              <span className={`px-2 py-0.5 rounded-full text-[10px] ${a.status === "Completed" ? "bg-green-400/10 text-green-400" : a.status === "In Progress" ? "bg-yellow-400/10 text-yellow-400" : "bg-blue-400/10 text-blue-400"}`}>{a.status}</span>
+                          <tr key={i} className="border-b border-white/[0.06] last:border-0 hover:bg-white/[0.02] transition-colors">
+                            <td className="py-4 px-5 font-medium text-[#E8ECF1]">{a.task}</td>
+                            <td className="py-4 px-5 text-[#94A3B8]">{a.assignee}</td>
+                            <td className="py-4 px-5 text-[#94A3B8]">{a.deadline}</td>
+                            <td className="py-4 px-5">
+                              <span className={`px-3 py-1 rounded-md font-semibold text-[11px] border ${a.status === "Completed" ? "bg-emerald-400/10 text-emerald-400 border-emerald-400/20" : a.status === "In Progress" ? "bg-amber-400/10 text-amber-400 border-amber-400/20" : "bg-blue-400/10 text-blue-400 border-blue-400/20"}`}>{a.status}</span>
                             </td>
                           </tr>
                         ))}</tbody>
@@ -246,12 +246,12 @@ export default function MeetingDetailPage() {
 
                 {activeTab === "decisions" && (
                   <div>
-                    <h3 className="text-sm font-semibold mb-4">Decisions Made</h3>
-                    <div className="space-y-2">
+                    <h3 className="text-[18px] font-semibold text-[#E8ECF1] mb-6">Decisions Made</h3>
+                    <div className="space-y-3">
                       {meetingData.decisions.map((d, i) => (
-                        <div key={i} className="flex items-start gap-2.5 p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                          <CheckCircle2 className="w-4 h-4 text-green-400 mt-0.5 shrink-0" />
-                          <p className="text-sm text-[#9CA3AF]">{d}</p>
+                        <div key={i} className="flex items-start gap-4 p-5 rounded-xl bg-emerald-400/5 border border-emerald-400/10 hover:bg-emerald-400/10 transition-colors">
+                          <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 shrink-0" />
+                          <p className="text-[15px] font-medium text-[#E8ECF1]">{d}</p>
                         </div>
                       ))}
                     </div>
@@ -260,12 +260,12 @@ export default function MeetingDetailPage() {
 
                 {activeTab === "risks" && (
                   <div>
-                    <h3 className="text-sm font-semibold mb-4">Risks Identified</h3>
-                    <div className="space-y-2">
+                    <h3 className="text-[18px] font-semibold text-[#E8ECF1] mb-6">Risks Identified</h3>
+                    <div className="space-y-3">
                       {meetingData.risks.map((r, i) => (
-                        <div key={i} className="flex items-start gap-2.5 p-3 rounded-lg bg-yellow-400/5 border border-yellow-400/10">
-                          <AlertTriangle className="w-4 h-4 text-yellow-400 mt-0.5 shrink-0" />
-                          <p className="text-sm text-[#9CA3AF]">{r}</p>
+                        <div key={i} className="flex items-start gap-4 p-5 rounded-xl bg-amber-400/5 border border-amber-400/10 hover:bg-amber-400/10 transition-colors">
+                          <AlertTriangle className="w-5 h-5 text-amber-400 mt-0.5 shrink-0" />
+                          <p className="text-[15px] font-medium text-[#E8ECF1]">{r}</p>
                         </div>
                       ))}
                     </div>
@@ -280,41 +280,43 @@ export default function MeetingDetailPage() {
             {/* AI Chat */}
             <AnimatePresence>
               {showChat && (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="glass-card p-4 flex flex-col" style={{ height: 400 }}>
-                  <div className="flex items-center gap-2 mb-3 pb-3 border-b border-white/5">
-                    <Brain className="w-4 h-4 text-purple-400" />
-                    <h3 className="text-sm font-semibold">AI Assistant</h3>
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot ml-1" />
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex flex-col" style={{ height: 450 }}>
+                  <div className="flex items-center gap-3 mb-4 pb-4 border-b border-white/[0.06]">
+                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
+                      <Brain className="w-4 h-4 text-indigo-400" />
+                    </div>
+                    <h3 className="text-[16px] font-semibold text-[#E8ECF1]">AI Assistant</h3>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 pulse-dot ml-auto" />
                   </div>
-                  <div className="flex-1 overflow-y-auto space-y-3 mb-3">
+                  <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
                     {chatMessages.length === 0 && (
-                      <div className="text-center py-8">
-                        <Brain className="w-8 h-8 text-purple-400/30 mx-auto mb-2" />
-                        <p className="text-xs text-[#6B7280]">Ask questions about this meeting</p>
-                        <div className="flex flex-wrap gap-1.5 justify-center mt-3">
+                      <div className="text-center py-10">
+                        <Brain className="w-10 h-10 text-indigo-400/30 mx-auto mb-3" />
+                        <p className="text-[13px] text-[#64748B]">Ask questions about this meeting</p>
+                        <div className="flex flex-wrap gap-2 justify-center mt-4">
                           {["What were the deadlines?", "Who handles frontend?", "Summarize decisions"].map((q, i) => (
-                            <button key={i} onClick={() => { setChatInput(q); }} className="text-[10px] px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 hover:bg-purple-500/20 transition-colors">{q}</button>
+                            <button key={i} onClick={() => { setChatInput(q); }} className="text-[12px] px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-[#94A3B8] hover:text-[#E8ECF1] hover:bg-white/[0.08] transition-all">{q}</button>
                           ))}
                         </div>
                       </div>
                     )}
                     {chatMessages.map((msg, i) => (
-                      <div key={i} className={msg.role === "user" ? "chat-bubble-user p-3 ml-8" : "chat-bubble-ai p-3 mr-8"}>
-                        <p className="text-xs leading-relaxed whitespace-pre-line">{msg.text}</p>
+                      <div key={i} className={msg.role === "user" ? "bg-white/[0.06] border border-white/[0.06] p-4 rounded-2xl rounded-tr-sm ml-8 text-[14px] text-[#E8ECF1]" : "bg-transparent p-4 mr-8 text-[14px] text-[#94A3B8]"}>
+                        <p className="leading-relaxed whitespace-pre-line">{msg.text}</p>
                       </div>
                     ))}
                     {aiTyping && (
-                      <div className="chat-bubble-ai p-3 mr-8 flex gap-1.5">
-                        <span className="typing-dot w-1.5 h-1.5 rounded-full bg-purple-400" />
-                        <span className="typing-dot w-1.5 h-1.5 rounded-full bg-purple-400" />
-                        <span className="typing-dot w-1.5 h-1.5 rounded-full bg-purple-400" />
+                      <div className="bg-transparent p-4 mr-8 flex gap-2 items-center">
+                        <span className="typing-dot w-2 h-2 rounded-full bg-indigo-400" />
+                        <span className="typing-dot w-2 h-2 rounded-full bg-indigo-400" />
+                        <span className="typing-dot w-2 h-2 rounded-full bg-indigo-400" />
                       </div>
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <input value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleChatSend()} placeholder="Ask about this meeting..." className="flex-1 px-3 py-2 text-xs bg-white/5 border border-white/8 rounded-lg text-white placeholder-[#6B7280]" />
-                    <button onClick={handleChatSend} className="p-2 rounded-lg gradient-bg hover:opacity-90 transition-opacity">
-                      <Send className="w-3.5 h-3.5 text-white" />
+                    <input value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === "Enter" && handleChatSend()} placeholder="Ask about this meeting..." className="flex-1 px-4 py-3 text-[14px] bg-[#060B14] border border-white/[0.08] rounded-xl text-[#E8ECF1] placeholder-[#64748B] focus:outline-none focus:border-indigo-500/40 focus:ring-4 focus:ring-indigo-500/10 transition-all" />
+                    <button onClick={handleChatSend} className="px-4 py-3 rounded-xl bg-indigo-500 text-white hover:bg-indigo-600 transition-all shadow-lg shadow-indigo-500/20">
+                      <Send className="w-4 h-4 text-white" />
                     </button>
                   </div>
                 </motion.div>
@@ -324,43 +326,45 @@ export default function MeetingDetailPage() {
             {/* Follow-up Email */}
             <AnimatePresence>
               {showEmail && (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="glass-card p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-cyan-400" />
-                      <h3 className="text-sm font-semibold">Follow-up Email</h3>
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
+                        <Mail className="w-4 h-4 text-cyan-400" />
+                      </div>
+                      <h3 className="text-[16px] font-semibold text-[#E8ECF1]">Follow-up Email</h3>
                     </div>
-                    <div className="flex gap-1.5">
-                      <button onClick={handleCopyEmail} className="p-1.5 rounded-md hover:bg-white/5 transition-colors">
-                        <Copy className={`w-3.5 h-3.5 ${emailCopied ? "text-green-400" : "text-[#6B7280]"}`} />
+                    <div className="flex gap-2">
+                      <button onClick={handleCopyEmail} className="p-2 rounded-lg border border-white/[0.06] hover:bg-white/[0.04] transition-all">
+                        <Copy className={`w-4 h-4 ${emailCopied ? "text-emerald-400" : "text-[#94A3B8]"}`} />
                       </button>
-                      <button className="p-1.5 rounded-md hover:bg-white/5 transition-colors">
-                        <Edit3 className="w-3.5 h-3.5 text-[#6B7280]" />
+                      <button className="p-2 rounded-lg border border-white/[0.06] hover:bg-white/[0.04] transition-all">
+                        <Edit3 className="w-4 h-4 text-[#94A3B8]" />
                       </button>
                     </div>
                   </div>
-                  <pre className="text-xs text-[#9CA3AF] leading-relaxed whitespace-pre-wrap bg-white/[0.02] rounded-lg p-3 border border-white/5 max-h-72 overflow-y-auto">{followUpEmail}</pre>
-                  <button className="w-full mt-3 py-2.5 rounded-xl gradient-bg text-xs font-medium hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-                    <Send className="w-3.5 h-3.5" /> Send Email
+                  <pre className="text-[13px] text-[#94A3B8] leading-relaxed whitespace-pre-wrap bg-[#060B14] rounded-xl p-4 border border-white/[0.08] max-h-80 overflow-y-auto shadow-inner">{followUpEmail}</pre>
+                  <button className="w-full mt-4 py-3 rounded-xl bg-indigo-500 text-white font-semibold hover:bg-indigo-600 transition-all shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2">
+                    <Send className="w-4 h-4" /> Send Email
                   </button>
                 </motion.div>
               )}
             </AnimatePresence>
 
             {/* Quick Stats */}
-            <div className="glass-card p-4 space-y-3">
-              <h3 className="text-xs font-semibold text-[#6B7280] uppercase tracking-wider">Quick Stats</h3>
+            <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-4">
+              <h3 className="text-[12px] font-semibold text-[#64748B] uppercase tracking-wider mb-2">Quick Stats</h3>
               {[
                 { label: "Duration", value: meetingData.duration, icon: Clock },
                 { label: "Action Items", value: meetingData.actionItems.length, icon: ListChecks },
                 { label: "Decisions", value: meetingData.decisions.length, icon: CheckCircle2 },
                 { label: "Risks", value: meetingData.risks.length, icon: AlertTriangle },
               ].map((s, i) => (
-                <div key={i} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
-                  <div className="flex items-center gap-2 text-xs text-[#9CA3AF]">
-                    <s.icon className="w-3.5 h-3.5" />{s.label}
+                <div key={i} className="flex items-center justify-between py-2 border-b border-white/[0.06] last:border-0">
+                  <div className="flex items-center gap-3 text-[14px] text-[#94A3B8]">
+                    <s.icon className="w-4 h-4 text-[#64748B]" />{s.label}
                   </div>
-                  <span className="text-sm font-semibold">{s.value}</span>
+                  <span className="text-[15px] font-semibold text-[#E8ECF1]">{s.value}</span>
                 </div>
               ))}
             </div>

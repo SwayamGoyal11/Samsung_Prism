@@ -9,7 +9,7 @@ function DashboardContent({ children }) {
       <Sidebar />
       <main
         className="flex-1 min-h-screen transition-all duration-300"
-        style={{ marginLeft: collapsed ? 72 : 260 }}
+        style={{ marginLeft: collapsed ? 72 : 280 }}
       >
         {children}
       </main>

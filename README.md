@@ -2,6 +2,9 @@
 
 A modern, AI-powered meeting analytics and intelligence platform built to transform how teams extract value from their conversations. 
 
+## 🎥 Project Demo
+- **Demo Video:** [Watch the full walkthrough on Google Drive](https://drive.google.com/file/d/1Ci0ppXRqfLMNus-Y1DCgF6Tqs6IW7lsn/view?usp=sharing)
+
 ## 🚨 Problem Statement
 
 In today's remote and hybrid work environments, professionals spend countless hours in meetings. However, the value of these discussions is often lost due to:

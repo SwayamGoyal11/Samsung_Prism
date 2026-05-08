@@ -4,136 +4,102 @@ import Link from "next/link";
 import {
   ArrowRight,
   Play,
-  Sparkles,
   Zap,
   BarChart3,
   CheckCircle2,
-  Users,
-  Calendar,
   MessageSquare,
+  Calendar,
+  Users,
   TrendingUp,
 } from "lucide-react";
 
 export default function HeroSection() {
-  const floatingCards = [
-    {
-      icon: CheckCircle2,
-      label: "3 Action Items Extracted",
-      color: "#7C3AED",
-      x: -60,
-      y: 40,
-      delay: 0.8,
-    },
-    {
-      icon: Calendar,
-      label: "Deadline: May 15",
-      color: "#06B6D4",
-      x: 60,
-      y: -30,
-      delay: 1.0,
-    },
-    {
-      icon: Users,
-      label: "Assigned to Sarah",
-      color: "#7C3AED",
-      x: -40,
-      y: -60,
-      delay: 1.2,
-    },
-    {
-      icon: TrendingUp,
-      label: "Productivity +24%",
-      color: "#06B6D4",
-      x: 50,
-      y: 60,
-      delay: 1.4,
-    },
-  ];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Effects */}
+    <section className="relative overflow-hidden" style={{ minHeight: "100vh", display: "flex", alignItems: "center" }}>
+      {/* Background */}
       <div className="absolute inset-0 hero-mesh" />
-      <div className="absolute inset-0 grid-pattern opacity-50" />
-      <div className="ambient-glow ambient-glow-purple" />
-      <div className="ambient-glow ambient-glow-cyan" />
+      <div className="absolute inset-0 grid-pattern" style={{ opacity: 0.4 }} />
 
-      {/* Animated gradient orbs */}
-      <motion.div
-        animate={{
-          x: [0, 50, -30, 0],
-          y: [0, -40, 20, 0],
-          scale: [1, 1.2, 0.9, 1],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-purple-500/5 blur-[100px]"
-      />
-      <motion.div
-        animate={{
-          x: [0, -40, 30, 0],
-          y: [0, 30, -50, 0],
-          scale: [1, 0.9, 1.1, 1],
-        }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-cyan-500/5 blur-[100px]"
-      />
+      {/* Ambient */}
+      <div className="absolute" style={{ width: "500px", height: "500px", top: "-100px", right: "-100px", background: "rgba(99,102,241,0.06)", borderRadius: "50%", filter: "blur(120px)", pointerEvents: "none" }} />
+      <div className="absolute" style={{ width: "400px", height: "400px", bottom: "-100px", left: "-100px", background: "rgba(59,130,246,0.04)", borderRadius: "50%", filter: "blur(120px)", pointerEvents: "none" }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-40 pb-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
+      <div className="relative z-10 site-container" style={{ paddingTop: "140px", paddingBottom: "100px" }}>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "60px", alignItems: "center" }}>
+          {/* Left */}
           <div>
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/10 text-[11px] font-bold uppercase tracking-[0.15em] text-purple-300 mb-8"
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "6px 14px",
+                borderRadius: "9999px",
+                border: "1px solid rgba(255,255,255,0.08)",
+                background: "rgba(255,255,255,0.03)",
+                fontSize: "12px",
+                fontWeight: 500,
+                color: "#94A3B8",
+                marginBottom: "32px",
+              }}
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Powered by Advanced AI</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" />
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22C55E" }} className="pulse-dot" />
+              Powered by Advanced AI
             </motion.div>
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="relative text-5xl sm:text-6xl lg:text-[76px] font-heading font-extrabold leading-[1.05] tracking-[-0.02em] mb-6"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              style={{
+                fontSize: "clamp(40px, 5vw, 64px)",
+                fontWeight: 700,
+                lineHeight: 1.08,
+                letterSpacing: "-0.025em",
+                marginBottom: "24px",
+                color: "#E8ECF1",
+              }}
             >
-              <span className="absolute inset-0 blur-[80px] opacity-40 bg-gradient-to-r from-purple-500 to-cyan-500 -z-10" />
-              Transform Meetings Into{" "}
-              <span className="gradient-text">Actionable Intelligence</span>
+              Transform Meetings<br />
+              Into <span className="gradient-text">Actionable Intelligence</span>
             </motion.h1>
 
-            {/* Subheading */}
+            {/* Sub */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-lg sm:text-xl font-medium text-[#9CA3AF] leading-[1.7] mb-10 max-w-xl"
+              transition={{ duration: 0.5, delay: 0.5 }}
+              style={{
+                fontSize: "18px",
+                color: "#94A3B8",
+                lineHeight: 1.75,
+                marginBottom: "40px",
+                maxWidth: "520px",
+              }}
             >
               AI-powered meeting assistant that summarizes discussions, extracts
-              action items, tracks deadlines, and automates productivity
+              action items, tracks deadlines, and automates your productivity
               workflows.
             </motion.p>
 
-            {/* Buttons */}
+            {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-wrap gap-4"
+              transition={{ duration: 0.5, delay: 0.65 }}
+              style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}
             >
-              <Link
-                href="/dashboard"
-                className="glow-btn px-8 py-4 text-base font-semibold flex items-center gap-2.5"
-              >
-                Start Free
-                <ArrowRight className="w-4.5 h-4.5" />
+              <Link href="/dashboard" className="btn-primary" style={{ padding: "12px 24px", fontSize: "15px", gap: "8px", textDecoration: "none" }}>
+                Get Started Free
+                <ArrowRight style={{ width: "16px", height: "16px" }} />
               </Link>
-              <button className="px-8 py-4 rounded-xl border border-white/10 bg-white/5 text-base font-medium text-[#9CA3AF] hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center gap-2.5 backdrop-blur-sm">
-                <Play className="w-4 h-4" />
+              <button className="btn-secondary" style={{ padding: "12px 24px", fontSize: "15px", gap: "8px" }}>
+                <Play style={{ width: "16px", height: "16px" }} />
                 Watch Demo
               </button>
             </motion.div>
@@ -142,109 +108,152 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="mt-12 flex items-center gap-6 text-sm text-[#6B7280]"
+              transition={{ delay: 0.9 }}
+              style={{ marginTop: "48px", display: "flex", alignItems: "center", gap: "16px" }}
             >
-              <div className="flex -space-x-2">
-                {[...Array(4)].map((_, i) => (
+              <div style={{ display: "flex" }}>
+                {[0, 1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full border-2 border-[#0B1020]"
                     style={{
-                      background: `linear-gradient(135deg, ${
-                        ["#7C3AED", "#06B6D4", "#8B5CF6", "#22D3EE"][i]
-                      } 0%, ${
-                        ["#06B6D4", "#7C3AED", "#22D3EE", "#8B5CF6"][i]
-                      } 100%)`,
+                      width: "32px",
+                      height: "32px",
+                      borderRadius: "50%",
+                      border: "2px solid #060B14",
+                      marginLeft: i > 0 ? "-8px" : "0",
+                      background: `linear-gradient(135deg, ${["#6366F1","#3B82F6","#8B5CF6","#06B6D4"][i]} 0%, ${["#3B82F6","#6366F1","#06B6D4","#8B5CF6"][i]} 100%)`,
                     }}
                   />
                 ))}
               </div>
-              <span>
-                Trusted by <span className="text-white font-medium">2,400+</span>{" "}
-                teams worldwide
-              </span>
+              <div style={{ fontSize: "13px", color: "#64748B" }}>
+                Trusted by <span style={{ color: "#E8ECF1", fontWeight: 500 }}>2,400+</span> teams worldwide
+              </div>
             </motion.div>
           </div>
 
-          {/* Right - Dashboard Preview */}
+          {/* Right — Dashboard Preview */}
           <motion.div
-            initial={{ opacity: 0, x: 40, rotateY: -5 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 0.9, delay: 0.6 }}
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="relative hidden lg:block"
           >
-            {/* Main Dashboard Card */}
-            <div className="glass-card p-6 relative">
-              {/* Dashboard header mockup */}
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400/80" />
-                  <div className="w-3 h-3 rounded-full bg-green-400/80" />
+            <div style={{
+              borderRadius: "16px",
+              border: "1px solid rgba(255,255,255,0.06)",
+              background: "rgba(12,18,32,0.8)",
+              backdropFilter: "blur(24px)",
+              padding: "24px",
+              boxShadow: "0 24px 64px rgba(0,0,0,0.5)",
+            }}>
+              {/* Window chrome */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "rgba(239,68,68,0.6)" }} />
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "rgba(245,158,11,0.6)" }} />
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "rgba(34,197,94,0.6)" }} />
                 </div>
-                <div className="flex items-center gap-2 text-xs text-[#6B7280]">
-                  <Zap className="w-3 h-3 text-purple-400" />
+                <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "11px", color: "#64748B", fontWeight: 500 }}>
+                  <Zap style={{ width: "12px", height: "12px", color: "#818CF8" }} />
                   AI Processing
                 </div>
               </div>
 
-              {/* Meeting Summary Card */}
-              <div className="bg-white/[0.03] rounded-xl p-4 mb-4 border border-white/5">
-                <div className="flex items-center gap-2 mb-3">
-                  <MessageSquare className="w-4 h-4 text-purple-400" />
-                  <span className="text-sm font-medium">AI Meeting Summary</span>
+              {/* Meeting Summary */}
+              <div style={{ borderRadius: "12px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)", padding: "16px", marginBottom: "12px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
+                  <MessageSquare style={{ width: "16px", height: "16px", color: "#818CF8" }} />
+                  <span style={{ fontSize: "13px", fontWeight: 500, color: "#E8ECF1" }}>AI Meeting Summary</span>
                 </div>
-                <div className="space-y-2">
-                  <div className="h-2.5 bg-white/5 rounded-full w-full" />
-                  <div className="h-2.5 bg-white/5 rounded-full w-4/5" />
-                  <div className="h-2.5 bg-white/5 rounded-full w-3/5" />
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <div style={{ height: "8px", background: "rgba(255,255,255,0.04)", borderRadius: "4px", width: "100%" }} />
+                  <div style={{ height: "8px", background: "rgba(255,255,255,0.04)", borderRadius: "4px", width: "80%" }} />
+                  <div style={{ height: "8px", background: "rgba(255,255,255,0.04)", borderRadius: "4px", width: "60%" }} />
                 </div>
               </div>
 
-              {/* Stats Grid */}
-              <div className="grid grid-cols-3 gap-3">
+              {/* Action Items */}
+              <div style={{ borderRadius: "12px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)", padding: "16px", marginBottom: "12px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
+                  <CheckCircle2 style={{ width: "16px", height: "16px", color: "#34D399" }} />
+                  <span style={{ fontSize: "13px", fontWeight: 500, color: "#E8ECF1" }}>Action Items</span>
+                  <span style={{ marginLeft: "auto", fontSize: "11px", background: "rgba(16,185,129,0.1)", color: "#34D399", padding: "2px 8px", borderRadius: "9999px", fontWeight: 500 }}>3 new</span>
+                </div>
                 {[
-                  { icon: BarChart3, label: "Meetings", value: "147", color: "text-purple-400" },
-                  { icon: CheckCircle2, label: "Tasks", value: "89", color: "text-cyan-400" },
-                  { icon: Zap, label: "AI Score", value: "96%", color: "text-green-400" },
+                  { text: "Review Q2 roadmap", due: "May 15" },
+                  { text: "Update design specs", due: "May 18" },
+                  { text: "Schedule team sync", due: "May 20" },
+                ].map((item, j) => (
+                  <div key={j} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "8px 0", borderBottom: j < 2 ? "1px solid rgba(255,255,255,0.03)" : "none" }}>
+                    <div style={{ width: "16px", height: "16px", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.1)", flexShrink: 0 }} />
+                    <span style={{ fontSize: "12px", color: "#94A3B8", flex: 1 }}>{item.text}</span>
+                    <span style={{ fontSize: "10px", color: "#64748B" }}>{item.due}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Stats */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>
+                {[
+                  { icon: BarChart3, label: "Meetings", value: "147", color: "#818CF8" },
+                  { icon: CheckCircle2, label: "Tasks Done", value: "89", color: "#34D399" },
+                  { icon: TrendingUp, label: "AI Score", value: "96%", color: "#60A5FA" },
                 ].map((stat, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2 + i * 0.15 }}
-                    className="bg-white/[0.03] rounded-lg p-3 border border-white/5 text-center"
+                    transition={{ delay: 1.0 + i * 0.12 }}
+                    style={{
+                      borderRadius: "12px",
+                      background: "rgba(255,255,255,0.02)",
+                      border: "1px solid rgba(255,255,255,0.04)",
+                      padding: "12px",
+                      textAlign: "center",
+                    }}
                   >
-                    <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1.5`} />
-                    <div className="text-lg font-bold">{stat.value}</div>
-                    <div className="text-[10px] text-[#6B7280]">{stat.label}</div>
+                    <stat.icon style={{ width: "16px", height: "16px", color: stat.color, margin: "0 auto 6px" }} />
+                    <div style={{ fontSize: "16px", fontWeight: 700, color: "#E8ECF1" }}>{stat.value}</div>
+                    <div style={{ fontSize: "10px", color: "#64748B", fontWeight: 500 }}>{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Floating Cards */}
-            {floatingCards.map((card, i) => (
+            {/* Floating badges */}
+            {[
+              { icon: Calendar, label: "Deadline: May 15", left: "24px", bottom: "60px", delay: 1.0 },
+              { icon: Users, label: "Assigned to Sarah", left: "16px", top: "20px", delay: 1.2 },
+            ].map((card, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: card.delay, duration: 0.5 }}
-                className="absolute glass-card px-4 py-2.5 flex items-center gap-2 text-xs font-medium float-animation"
+                className="float-animation"
                 style={{
-                  right: card.x > 0 ? `-${card.x}px` : "auto",
-                  left: card.x < 0 ? `${Math.abs(card.x) - 40}px` : "auto",
-                  top: card.y < 0 ? `${Math.abs(card.y)}px` : "auto",
-                  bottom: card.y > 0 ? `${card.y}px` : "auto",
+                  position: "absolute",
+                  left: card.left,
+                  top: card.top,
+                  bottom: card.bottom,
+                  borderRadius: "12px",
+                  background: "rgba(12,18,32,0.9)",
+                  backdropFilter: "blur(24px)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  padding: "8px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  color: "#94A3B8",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
                   animationDelay: `${i * 0.5}s`,
                 }}
               >
-                <card.icon
-                  className="w-3.5 h-3.5"
-                  style={{ color: card.color }}
-                />
-                <span className="text-[#9CA3AF]">{card.label}</span>
+                <card.icon style={{ width: "14px", height: "14px", color: "#818CF8" }} />
+                {card.label}
               </motion.div>
             ))}
           </motion.div>

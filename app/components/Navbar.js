@@ -2,13 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import {
-  Brain,
-  Menu,
-  X,
-  ChevronRight,
-  Sparkles,
-} from "lucide-react";
+import { Brain, Menu, X, ChevronRight } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -22,8 +16,9 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Features", href: "#features" },
+    { label: "How It Works", href: "#workflow" },
+    { label: "Testimonials", href: "#testimonials" },
     { label: "Dashboard", href: "/dashboard" },
-    { label: "Pricing", href: "#pricing" },
   ];
 
   return (
@@ -33,32 +28,38 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#0B1020]/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
+          ? "bg-[#060B14]/80 backdrop-blur-2xl border-b border-white/[0.06]"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="site-container">
+        <div className="flex items-center justify-between" style={{ height: "72px" }}>
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative">
-              <div className="w-9 h-9 rounded-xl gradient-bg flex items-center justify-center">
-                <Brain className="w-5 h-5 text-white" />
-              </div>
-              <div className="absolute inset-0 w-9 h-9 rounded-xl gradient-bg opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500" />
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+            <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
+              <Brain className="w-4 h-4 text-white" />
             </div>
-            <span className="text-lg font-bold tracking-tight">
-              Meeting<span className="gradient-text">AI</span>
+            <span style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "-0.01em" }}>
+              Meeting<span style={{ color: "#6366F1" }}>AI</span>
             </span>
           </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Desktop Nav — centered */}
+          <div className="hidden md:flex items-center" style={{ gap: "8px" }}>
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm text-[#9CA3AF] hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/5"
+                style={{
+                  padding: "8px 16px",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#94A3B8",
+                  borderRadius: "8px",
+                  transition: "all 0.2s",
+                  textDecoration: "none",
+                }}
+                className="hover:text-[#E8ECF1] hover:bg-white/[0.04]"
               >
                 {link.label}
               </Link>
@@ -66,29 +67,38 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center shrink-0" style={{ gap: "12px" }}>
             <Link
               href="/dashboard"
-              className="px-4 py-2 text-sm text-[#9CA3AF] hover:text-white transition-colors duration-200"
+              style={{
+                padding: "8px 16px",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "#94A3B8",
+                textDecoration: "none",
+                transition: "color 0.2s",
+              }}
+              className="hover:text-[#E8ECF1]"
             >
               Log in
             </Link>
             <Link
               href="/dashboard"
-              className="glow-btn px-5 py-2.5 text-sm flex items-center gap-2"
+              className="btn-primary"
+              style={{ padding: "8px 20px", fontSize: "14px", gap: "6px" }}
             >
-              <Sparkles className="w-4 h-4" />
               Get Started
-              <ChevronRight className="w-3.5 h-3.5" />
+              <ChevronRight style={{ width: "14px", height: "14px" }} />
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-[#9CA3AF] hover:text-white transition-colors"
+            className="md:hidden"
+            style={{ padding: "8px", color: "#94A3B8" }}
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? <X style={{ width: "20px", height: "20px" }} /> : <Menu style={{ width: "20px", height: "20px" }} />}
           </button>
         </div>
       </div>
@@ -101,25 +111,35 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#111827]/95 backdrop-blur-xl border-b border-white/5"
+            className="md:hidden"
+            style={{ background: "rgba(12,18,32,0.95)", backdropFilter: "blur(24px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
           >
-            <div className="px-6 py-4 space-y-1">
+            <div style={{ padding: "16px 24px" }}>
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 text-[#9CA3AF] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  style={{
+                    display: "block",
+                    padding: "12px 16px",
+                    fontSize: "14px",
+                    color: "#94A3B8",
+                    borderRadius: "8px",
+                    textDecoration: "none",
+                    transition: "all 0.2s",
+                  }}
+                  className="hover:text-white hover:bg-white/[0.04]"
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-3 border-t border-white/5">
+              <div style={{ paddingTop: "12px", marginTop: "8px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                 <Link
                   href="/dashboard"
-                  className="glow-btn w-full py-3 text-center text-sm flex items-center justify-center gap-2"
+                  className="btn-primary"
+                  style={{ width: "100%", padding: "12px", fontSize: "14px", textDecoration: "none" }}
                 >
-                  <Sparkles className="w-4 h-4" />
                   Get Started
                 </Link>
               </div>

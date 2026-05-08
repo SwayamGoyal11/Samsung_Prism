@@ -43,8 +43,8 @@ Follow these steps to run the project locally:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YashP001/Samsung_prism.git
-   cd Samsung_prism
+   git clone https://github.com/SwayamGoyal11/Samsung_Prism.git
+   cd Samsung_Prism
    ```
 
 2. **Install dependencies:**

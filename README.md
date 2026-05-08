@@ -1,49 +1,78 @@
-# Meeting Intelligence
+# Meeting Intelligence - Samsung PRISM Hackathon
 
-A modern, AI-powered meeting analytics and intelligence platform built with Next.js, Tailwind CSS, and Framer Motion. This platform transforms your meeting recordings and transcripts into actionable data, providing AI summaries, automated task extraction, and deep productivity insights.
+A modern, AI-powered meeting analytics and intelligence platform built to transform how teams extract value from their conversations. 
 
-## Features
+## 🚨 Problem Statement
 
-- **Interactive Dashboard**: Track your team's meeting productivity with beautiful analytics, visualized using Recharts.
-- **AI Summaries & Action Items**: Generate concise, structured summaries with key points highlighted automatically and deadlines assigned.
-- **Meeting Analytics**: Visualize meeting frequency, duration trends, and participation metrics in real-time.
+In today's remote and hybrid work environments, professionals spend countless hours in meetings. However, the value of these discussions is often lost due to:
+- Lack of centralized, easily searchable meeting records.
+- Time consumed manually writing summaries and extracting action items.
+- Difficulty in tracking meeting productivity and individual participation.
+- Deadlines and key decisions slipping through the cracks.
+
+## 💡 Proposed Solution
+
+**Meeting Intelligence** solves these problems by providing an automated, AI-driven platform that turns raw meeting transcripts into actionable, structured data.
+- **Automated Summarization**: Instantly generates concise summaries highlighting key points.
+- **Smart Action Items**: Automatically extracts tasks, assigns them to personnel, and detects deadlines.
+- **Deep Analytics**: Visualizes meeting frequency, productivity trends, and participation metrics to optimize team efficiency.
+- **Centralized AI Search**: Allows users to query past meetings using natural language to instantly retrieve decisions and context.
+
+## ✨ Key Features
+
+- **Interactive Dashboard**: Track your team's meeting productivity with beautiful analytics (visualized using Recharts).
+- **AI Summaries & Action Items**: Generate structured summaries with key points and deadlines assigned.
+- **Meeting Analytics**: Visualize meeting frequency, duration trends, and participation metrics.
 - **AI Insights Feed**: Receive smart alerts and trends based on your team's meeting behavior.
 - **Modern UI/UX**: Designed with a premium dark-mode aesthetic, utilizing Framer Motion for smooth micro-interactions.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Frontend Framework**: [Next.js](https://nextjs.org/) (App Router)
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
 - **Charts**: Recharts
 
-## Getting Started
+## ⚙️ Setup Instructions
 
-First, install dependencies:
+Follow these steps to run the project locally:
 
-```bash
-npm install
-# or
-yarn install
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/YashP001/Samsung_prism.git
+   cd Samsung_prism
+   ```
 
-Then, run the development server:
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or yarn install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   # or yarn dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+4. **Access the application:**
+   Open [http://localhost:3000](http://localhost:3000) in your web browser.
 
-## Project Structure
+## 🚀 Usage Guide
 
-- `/app/dashboard`: Main application dashboard and its nested routes (analytics, meetings, tasks, etc.).
+1. **Landing Page**: Upon opening the application, you will be greeted by the landing page which explains the platform's value proposition.
+2. **Dashboard**: Navigate to the dashboard to view the main interface. Here you can see a high-level overview of productivity metrics and AI insights.
+3. **Analytics**: Review the "Meeting Activity" and "Productivity Trend" charts to analyze team performance over time.
+4. **Recent Meetings & Deadlines**: Check the recent meetings list and upcoming deadlines panel to track ongoing tasks and past discussions.
+*(Note: Current dashboard data is mocked for UI demonstration purposes as part of the frontend prototype).*
+
+## 📁 Project Structure
+
+- `/app/dashboard`: Main application dashboard and nested routes (analytics, meetings, tasks, etc.).
 - `/app/components`: Reusable UI components including Navbars, Sidebar, Cards, and landing page sections.
 - `/public`: Static assets and icons.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License.
